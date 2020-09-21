@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        function concatenar(){
+            var nome = document.getElementById("nome").value;
+            var sobrenome = document.getElementById("sobrenome").value;
+            var resultado = document.getElementById("resultado");
+            resultado.textContent = nome + " " + sobrenome;
+        }
+    </script>
+<body>
+    <div>
+        <p>Nome: <input type="text" id="nome" onkeydown="concatenar()"></p>
+        <p>Sobrenome: <input type="text" id="sobrenome" onkeydown="concatenar()"></p>
+        <p>Nome completo: <span id="resultado">????</span></p>
+    </div>
+</body>
+</html>
