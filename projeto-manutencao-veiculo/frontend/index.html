@@ -7,7 +7,10 @@
     <div class="container" ng-app="myApp" ng-controller="myCtrl">
         <div class="content" ng-if="objeto.editando">
             <form class="content" >
-                <h1 class="titulo">Manutenção</h1>
+                <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h1 class="titulo text-center">Manutenção</h1>
                 <p>Id: <input class="form-control" type="text" ng-model="objeto.id" readonly ></p>
                 <p>Nome: <input class="form-control" type="text" ng-model="objeto.nome" ></p>
                 <p>Dia: <input class="form-control" type="text" ng-model="objeto.dia" ></p>
@@ -19,7 +22,7 @@
         </div>
 
         <div class="content" ng-if="!objeto.editando">
-            <h1 class="titulo">Lista de manutenções</h1>
+            <h1 class="titulo text-center">Lista de manutenções</h1>
             <table border="1" class="table table-dark">
                 <tr>
                     <th>id</th>
