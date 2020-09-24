@@ -11,19 +11,19 @@
     </style>
 <body>
     <div class="container" ng-app="myApp" ng-controller="myCtrl">
-        <div class="content" ng-if="id">
+        <div class="content" ng-if="objeto.id">
             <form class="content" >
                 <h1 class="titulo">Manutenção</h1>
-                <p>Id: <input class="form-control" type="text" ng-model="id" readonly ></p>
-                <p>Nome: <input class="form-control" type="text" ng-model="nome" ></p>
-                <p>Dia: <input class="form-control" type="text" ng-model="dia" ></p>
-                <p>Valor: <input class="form-control" type="text" ng-model="valor" ></p>
+                <p>Id: <input class="form-control" type="text" ng-model="objeto.id" readonly ></p>
+                <p>Nome: <input class="form-control" type="text" ng-model="objeto.nome" ></p>
+                <p>Dia: <input class="form-control" type="text" ng-model="objeto.dia" ></p>
+                <p>Valor: <input class="form-control" type="text" ng-model="objeto.valor" ></p>
                 <button class="btn btn-success" ng-click="save()">save</button>
                 <button class="btn btn-warning " ng-click="preencher()">easter egg</button>
             </form>
         </div>
 
-        <div class="content" ng-if="!id">
+        <div class="content" ng-if="!objeto.id">
             <h1 class="titulo">Lista de manutenções</h1>
             <table border="1" class="table table-dark">
                 <tr>

@@ -1,17 +1,19 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
   
+  $scope.objeto = new Object();
+
   $scope.preencher = function(){
-    $scope.dia = "2020-09-24";
-    $scope.nome = "Troca de óleo";
-    $scope.valor = "36.00";
+    $scope.objeto.dia = "2020-09-24";
+    $scope.objeto.nome = "Troca de óleo";
+    $scope.objeto.valor = "36.00";
   }
 
   $scope.insert = function(){
     $http.post("http://localhost:8080/manutencoes", {
-      'valor':$scope.valor,
-      'nome':$scope.nome,
-      'dia':$scope.dia
+      'valor':$scope.objeto.valor,
+      'nome':$scope.objeto.nome,
+      'dia':$scope.objeto.dia
     })
     .then(function(response){
       $scope.manutencoes = response.data;
@@ -20,10 +22,7 @@ app.controller('myCtrl', function($scope, $http) {
   };    
 
   $scope.clear = function(){
-    $scope.id = "";
-    $scope.dia = "";
-    $scope.nome = "";
-    $scope.valor = "";
+    $scope.objeto = new Object();
   }
 
   $scope.getTable = function(){
@@ -36,10 +35,10 @@ app.controller('myCtrl', function($scope, $http) {
   $scope.getOne = function(id){
     $http.get("http://localhost:8080/manutencoes/" + id)  
     .then(function(response) {
-      $scope.id=response.data.id;
-      $scope.dia=response.data.dia;
-      $scope.nome=response.data.nome;
-      $scope.valor=response.data.valor;
+      $scope.objeto.id=response.data.id;
+      $scope.objeto.dia=response.data.dia;
+      $scope.objeto.nome=response.data.nome;
+      $scope.objeto.valor=response.data.valor;
     });
   }
   
@@ -59,9 +58,9 @@ app.controller('myCtrl', function($scope, $http) {
 
   $scope.put = function(id){
     $http.put("http://localhost:8080/manutencoes/" + id,{
-    'valor':$scope.valor,
-    'nome':$scope.nome,
-    'dia':$scope.dia
+    'valor':$scope.objeto.valor,
+    'nome':$scope.objeto.nome,
+    'dia':$scope.objeto.dia
     })
     .then(function(response){
       $scope.manutencoes = response.data;
@@ -70,11 +69,11 @@ app.controller('myCtrl', function($scope, $http) {
   }
 
   $scope.save = function(){
-  if ($scope.dia == "") {
+  if ($scope.objeto.dia == "") {
     console.info("Campo em Branco!")
   } else {
-    if ($scope.id) {
-      $scope.put($scope.id);
+    if ($scope.objeto.id) {
+      $scope.put($scope.objeto.id);
     } else {
       $scope.insert();
     }    
