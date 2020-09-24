@@ -2,6 +2,7 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
   
   $scope.objeto = new Object();
+  $scope.objeto.editando = true;
 
   $scope.preencher = function(){
     $scope.objeto.dia = "2020-09-24";
@@ -33,6 +34,8 @@ app.controller('myCtrl', function($scope, $http) {
   }
 
   $scope.getOne = function(id){
+    $scope.objeto.editando = true;
+
     $http.get("http://localhost:8080/manutencoes/" + id)  
     .then(function(response) {
       $scope.objeto.id=response.data.id;
@@ -72,16 +75,21 @@ app.controller('myCtrl', function($scope, $http) {
   if ($scope.objeto.dia == "") {
     console.info("Campo em Branco!")
   } else {
-    if ($scope.objeto.id) {
-      $scope.put($scope.objeto.id);
-    } else {
-      $scope.insert();
-    }    
-    console.info("Save Success!")
-    $scope.clear();
-    $scope.getTable();
+      if ($scope.objeto.id) {
+        $scope.put($scope.objeto.id);
+      } else {
+        $scope.insert();
+      }    
+      console.info("Save Success!")
+      $scope.clear();
+      $scope.getTable();
+      $scope.objeto.editando = false;
+    }
+  }  
+
+  $scope.new = function(){
+    $scope.objeto.editando = true;
   }
-}  
 
   $scope.getTable();
 });

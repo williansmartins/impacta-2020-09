@@ -3,15 +3,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="controller.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <style>
-        .hide{
-            display: none;
-        }
-    </style>
 <body>
     <div class="container" ng-app="myApp" ng-controller="myCtrl">
-        <div class="content" ng-if="objeto.id">
+        <div class="content" ng-if="objeto.editando">
             <form class="content" >
                 <h1 class="titulo">Manutenção</h1>
                 <p>Id: <input class="form-control" type="text" ng-model="objeto.id" readonly ></p>
@@ -19,11 +13,12 @@
                 <p>Dia: <input class="form-control" type="text" ng-model="objeto.dia" ></p>
                 <p>Valor: <input class="form-control" type="text" ng-model="objeto.valor" ></p>
                 <button class="btn btn-success" ng-click="save()">save</button>
-                <button class="btn btn-warning " ng-click="preencher()">easter egg</button>
+                <button class="btn btn-warning" ng-click="objeto.editando=!objeto.editando">back</button>
+                <button class="btn btn-warning d-none" ng-click="preencher()">easter egg</button>
             </form>
         </div>
 
-        <div class="content" ng-if="!objeto.id">
+        <div class="content" ng-if="!objeto.editando">
             <h1 class="titulo">Lista de manutenções</h1>
             <table border="1" class="table table-dark">
                 <tr>
