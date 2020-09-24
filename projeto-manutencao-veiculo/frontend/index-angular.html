@@ -2,35 +2,50 @@
 <html>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="controller.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
 <body>
-    <div ng-app="myApp" ng-controller="myCtrl">
-        <p>Nome: <input type="text" ng-model="nome" ></p>
-        <p>Dia: <input type="text" ng-model="dia" ></p>
-        <p>Valor: <input type="text" ng-model="valor" ></p>
-        <button ng-click="salvar()">Salvar</button>
+    <div class="container" ng-app="myApp" ng-controller="myCtrl">
+        <div class="content" ng-if="id">
+            <form class="content" >
+                <h1 class="titulo">Manutenção</h1>
+                <p>Id: <input class="form-control" type="text" ng-model="id" readonly ></p>
+                <p>Nome: <input class="form-control" type="text" ng-model="nome" ></p>
+                <p>Dia: <input class="form-control" type="text" ng-model="dia" ></p>
+                <p>Valor: <input class="form-control" type="text" ng-model="valor" ></p>
+                <button class="btn btn-success" ng-click="save()">save</button>
+                <button class="btn btn-warning " ng-click="preencher()">easter egg</button>
+            </form>
+        </div>
 
-        
-
-        <table border="1">
-            <tr>
-                <th>id</th>
-                <th>nome</th>
-                <th>dia</th>
-                <th>valor</th>
-                <th>ações</th>
-            </tr>
-            <tr ng-repeat="manutencao in manutencoes">
-                <td>{{manutencao.id}}</td>
-                <td>{{manutencao.nome}}</td>
-                <td>{{manutencao.dia}}</td>
-                <td>{{manutencao.valor}}</td>
-                <td>
-                    <button ng-click="getOne(manutencao.id)">getOne</button> 
-                    <button ng-click="put(manutencao.id)">put</button> 
-                    <button ng-click="delete(manutencao.id)">delete</button>
-                </td>
-            </tr>
-        </table>
+        <div class="content" ng-if="!id">
+            <h1 class="titulo">Lista de manutenções</h1>
+            <table border="1" class="table table-dark">
+                <tr>
+                    <th>id</th>
+                    <th>nome</th>
+                    <th>dia</th>
+                    <th>valor</th>
+                    <th>ações</th>
+                </tr>
+                <tr ng-repeat="manutencao in manutencoes">
+                    <td>{{manutencao.id}}</td>
+                    <td>{{manutencao.nome}}</td>
+                    <td>{{manutencao.dia}}</td>
+                    <td>{{manutencao.valor}}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="getOne(manutencao.id)">edit</button> 
+                        <button class="btn btn-danger" ng-click="delete(manutencao.id)">delete</button>
+                    </td>
+                </tr>
+            </table>
+            <button class="btn btn-info " ng-click="new()">new</button>
+        </div>
     </div>
 </body>
 </html>
