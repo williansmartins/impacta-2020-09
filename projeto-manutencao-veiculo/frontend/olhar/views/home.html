@@ -1,0 +1,104 @@
+ <div id="home" ng-cloak>
+    <div class="wrapper">
+        <header>
+            <h2>{{titulo}}</h2>
+        </header>
+        <section ng-if="tela==1" id="tela1" data-apelido="home">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="thumbnail">
+                        <i class="fas fa-oil-can"></i>
+                        <h3>Óleo</h3>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="thumbnail" ng-click="novaManutencao('RELACAO')">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Relação</h3>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="thumbnail">
+                        <i class="fas fa-ring"></i>
+                        <h3>Pneu</h3>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="thumbnail">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Lâmpada</h3>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="thumbnail">
+                        <i class="fas fa-car-battery"></i>
+                        <h3>Bateria</h3>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="thumbnail">
+                        <i class="fas fa-hammer"></i>
+                        <h3>Outros</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section ng-if="tela==2" id="tela2" data-apelido="listagem">
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="(key, item) in lista">
+                    <span class="label label-primary">{{item.data}}</span>
+                    {{item.categoriaHumanizada}}
+                    <a href="javascript:void(0)" class="" ng-show="item.confirmar!=true" ng-click="item.confirmar=true">
+                        <i class="fas fa-trash"></i>
+                    </a> 
+                    <a href="javascript:void(0)" ng-click="prepararParaEditar(item)">
+                        <i class="fas fa-edit"></i>
+                    </a>    
+                    <span class="label label-danger" ng-show="item.confirmar==true" ng-click="excluir(item);">confirmar?</span>
+                </li>
+            </ul>
+        </section>
+        <section ng-if="tela==3"  id="tela3" data-apelido="edicao">
+            <div class="container">
+                <div class="">
+                    <div class="input-group">
+                      <span class="input-group-addon">Data</span>
+                      <input type="text" ng-model="itemSelecionado.data" class="form-control" />
+                    </div> 
+                    <br />
+                    <div class="input-group">
+                      	<span class="input-group-addon">Categoria</span>
+						<select class="form-control" ng-model="itemSelecionado.categoria">
+							<option value="CORRENTE">Corrente</option>
+							<option value="TROCADEOLEO">Troca de Óleo</option>
+							<option value="COMBUSTIVEL">Combustível</option>
+						</select>
+                    </div>   
+                    <br />
+                    <div class="input-group">
+                      <span class="input-group-addon">Kilometragem</span>
+                      <input type="text" ng-model="itemSelecionado.kilometragem" class="form-control" />
+                    </div> 
+                    <br />
+                    <div class="input-group">
+                      <span class="input-group-addon">Observações</span>
+                      <textarea ng-model="itemSelecionado.observacoes" class="form-control" rows="4"></textarea>
+                    </div> 
+                </div>
+            </div>
+            <div class="">
+                <a class="btn btn-success " ng-click="salvar()">Salvar</a>         
+                <a class="btn btn-warning " ng-click="mudarTela(2)">Voltar</a>         
+                <a class="btn btn-danger " ng-click="deletar(entidadeSelecionada.id)">Excluir</a>         
+            </div>
+        </section>
+        <nav>
+            <ul>
+                <li ng-click="mudarTela(1)" ng-class="{'ativado' : tela==1}" class="ponto"><a href="javascript:void(0)"><i class="fas fa-home"></i>home</a></li>
+                <li ng-click="mudarTela(2)" ng-class="{'ativado' : tela==2}" class="hoje"><a href="javascript:void(0)"><i class="fas fa-list"></i>lista</a></li>
+                <li ng-click="mudarTela(3)" ng-class="{'ativado' : tela==3}" class="mes"><a href="javascript:void(0)"><i class="fas fa-wrench"></i>novo</a></li>
+                <li ng-click="sair()" class="sair"><a href="javascript:void(0)"><i class="fas fa-sign-out-alt"></i>sair</a></li>
+            </ul>
+        </nav>
+    </div>
+ </div> 

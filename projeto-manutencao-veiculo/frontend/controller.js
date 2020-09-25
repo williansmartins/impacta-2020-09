@@ -2,7 +2,7 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
   
   $scope.objeto = new Object();
-  $scope.objeto.editando = true;
+  $scope.objeto.editando = false;
 
   $scope.preencher = function(){
     $scope.objeto.dia = "2020-09-24";
@@ -11,7 +11,7 @@ app.controller('myCtrl', function($scope, $http) {
   }
 
   $scope.insert = function(){
-    $http.post("http://localhost:8080/manutencoes", {
+    $http.post("https://pwms.com.br/manutencao-veiculo-0.0.1-SNAPSHOT/manutencoes", {
       'valor':$scope.objeto.valor,
       'nome':$scope.objeto.nome,
       'dia':$scope.objeto.dia
@@ -27,7 +27,7 @@ app.controller('myCtrl', function($scope, $http) {
   }
 
   $scope.getTable = function(){
-    $http.get("http://localhost:8080/manutencoes")
+    $http.get("https://pwms.com.br/manutencao-veiculo-0.0.1-SNAPSHOT/manutencoes")
     .then(function(response){
       $scope.manutencoes = response.data;
     });
@@ -36,7 +36,7 @@ app.controller('myCtrl', function($scope, $http) {
   $scope.getOne = function(id){
     $scope.objeto.editando = true;
 
-    $http.get("http://localhost:8080/manutencoes/" + id)  
+    $http.get("https://pwms.com.br/manutencao-veiculo-0.0.1-SNAPSHOT/manutencoes/" + id)  
     .then(function(response) {
       $scope.objeto.id=response.data.id;
       $scope.objeto.dia=response.data.dia;
@@ -46,21 +46,21 @@ app.controller('myCtrl', function($scope, $http) {
   }
   
   $scope.getAll = function(){
-    $http.get("http://localhost:8080/manutencoes")
+    $http.get("https://pwms.com.br/manutencao-veiculo-0.0.1-SNAPSHOT/manutencoes")
     .then(function(response) {
         console.info(response);
     });    
   }
 
   $scope.delete = function(id){
-    $http.delete("http://localhost:8080/manutencoes/" + id)
+    $http.delete("https://pwms.com.br/manutencao-veiculo-0.0.1-SNAPSHOT/manutencoes/" + id)
     .then(function(response){
     $scope.getTable();    
     });
   }
 
   $scope.put = function(id){
-    $http.put("http://localhost:8080/manutencoes/" + id,{
+    $http.put("https://pwms.com.br/manutencao-veiculo-0.0.1-SNAPSHOT/manutencoes/" + id,{
     'valor':$scope.objeto.valor,
     'nome':$scope.objeto.nome,
     'dia':$scope.objeto.dia
