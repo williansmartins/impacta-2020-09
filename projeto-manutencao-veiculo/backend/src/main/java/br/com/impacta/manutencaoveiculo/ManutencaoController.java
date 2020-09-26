@@ -26,7 +26,7 @@ public class ManutencaoController {
 	}
 	
 	@GetMapping("/manutencoes/{id}")
-	public Optional<ManutencaoModel> buscarUm(@PathVariable Long id) {
+	public List<ManutencaoModel> buscarUm(@PathVariable Long id) {
 		return repositorio.findById(id);
 	}
 	
@@ -51,7 +51,7 @@ public class ManutencaoController {
 	@DeleteMapping("/manutencoes/{id}")
 	public String remover(@PathVariable Long id) {
 		try{
-			repositorio.deleteById(id);
+			repositorio.delete(id);
 			return "1";
 		}catch (Exception e) {
 			return "0";
