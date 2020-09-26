@@ -1,4 +1,4 @@
-package br.com.impacta.manutencaoveiculo;
+package br.com.impacta.manutencaoveiculo.data;
 
 import java.util.Date;
 

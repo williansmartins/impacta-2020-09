@@ -1,4 +1,4 @@
-package br.com.impacta.manutencaoveiculo;
+package br.com.impacta.manutencaoveiculo.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
