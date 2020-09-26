@@ -25,10 +25,10 @@ public class ManutencaoController {
 		return repositorio.findAll();
 	}
 	
-	@GetMapping("/manutencoes/{id}")
-	public Optional<ManutencaoModel> buscarUm(@PathVariable Long id) {
-		return repositorio.findById(id);
-	}
+//	@GetMapping("/manutencoes/{id}")
+//	public Optional<ManutencaoModel> buscarUm(@PathVariable Long id) {
+//		return repositorio.findById(id);
+//	}
 	
 	@GetMapping("/manutencoes/nome/{nome}")
 	public List<ManutencaoModel> buscarPorNome(@PathVariable String nome) {
@@ -48,14 +48,14 @@ public class ManutencaoController {
 		return model;
 	}
 	
-	@DeleteMapping("/manutencoes/{id}")
-	public String remover(@PathVariable Long id) {
-		try{
-			repositorio.deleteById(id);
-			return "1";
-		}catch (Exception e) {
-			return "0";
-		}
-	}
+//	@DeleteMapping("/manutencoes/{id}")
+//	public String remover(@PathVariable Long id) {
+//		try{
+//			repositorio.deleteById(id);
+//			return "1";
+//		}catch (Exception e) {
+//			return "0";
+//		}
+//	}
 	
 }
