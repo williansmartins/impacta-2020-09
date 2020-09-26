@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-interface ManutencaoRepository extends JpaRepository<ManutencaoModel, Long> {
+public interface ManutencaoRepository extends JpaRepository<ManutencaoModel, Long> {
 
 	public List<ManutencaoModel> findByNome(String string);
 	
