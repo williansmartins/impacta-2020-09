@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="javascript/app.js"></script>
+        <script src="javascript/service.js"></script>
+        <script src="javascript/controller.js"></script>
+        <script src="javascript/config.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css" />
+        <meta charset="UTF-8">
+        <title>Login</title>
+    </head>
+<body id="login">
+    <div class="container mt-5" ng-app="myApp" ng-controller="myCtrl">
+        <form>
+            <div class="form-group">
+              <label for="user">User</label>
+              <input type="email" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Enter user">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
