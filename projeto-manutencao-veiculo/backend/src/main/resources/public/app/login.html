@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-        <script src="javascript/app.js"></script>
-        <script src="javascript/service.js"></script>
-        <script src="javascript/controller.js"></script>
-        <script src="javascript/config.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="css/styles.css" />
         <meta charset="UTF-8">
         <title>Login</title>
     </head>
 <body id="login">
-    <div class="container mt-5" ng-app="myApp" ng-controller="myCtrl">
+    <div class="container mt-5" ng-app="myApp" ng-controller="LoginController">
         <form>
             <div class="form-group">
               <label for="user">User</label>
-              <input type="email" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Enter user">
+              <input type="text" class="form-control" id="user" aria-describedby="emailHelp" ng-model="form.email" placeholder="Enter user">
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Password">
+              <input type="password" class="form-control" id="password" ng-model="form.password" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" ng-click="login()">Submit</button>
         </form>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js" integrity="sha512-XXstIIHBPC0Qn/UIcOuyzZxk2h459PLcn+/j+fTFrBzcUpyE5EoQky9m5rnReRyBLW49aK+oDaoQUKgNEaKKJQ==" crossorigin="anonymous"></script>
+    <script src="javascript/app.js"></script>
+    <script src="javascript/login-service.js"></script>
+    <script src="javascript/login-controller.js"></script>
+    <script src="javascript/config.js"></script>
 </body>
 </html>

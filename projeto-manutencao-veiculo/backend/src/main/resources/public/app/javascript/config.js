@@ -2,11 +2,14 @@ app.factory('BearerAuthInterceptor', function ($window, $q) {
     return {
         request: function(config) {
             config.headers = config.headers || {};
-            // if ($window.localStorage.getItem('token')) {
+            var token = $window.localStorage.getItem('ngStorage-token');
+            token = token.split('\"').join('');
+            
+            if (token) {
               // may also use sessionStorage
-                // config.headers.Authorization = 'Bearer ' + $window.localStorage.getItem('token');
-                config.headers.Authorization = 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwMTk0OTEwNX0.jLtooYm61PWQDRf56QXR0SCzumrgKOass90FmWVwaz4h9yDDeYUCa5QL2439dRyrHUUs7lmaT2bVjWGc9_rqYw';
-            // }
+                 config.headers.Authorization = 'Bearer ' + token;
+//                config.headers.Authorization = 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwMTk0OTEwNX0.jLtooYm61PWQDRf56QXR0SCzumrgKOass90FmWVwaz4h9yDDeYUCa5QL2439dRyrHUUs7lmaT2bVjWGc9_rqYw';
+            }
             return config || $q.when(config);
         },
         response: function(response) {

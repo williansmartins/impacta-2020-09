@@ -3,8 +3,8 @@
 // 	function ($scope, $uibModal, $log, $document, $location, $window, $filter, $rootScope, $localStorage, $rootScope, ManutencaoService) {
 
 
-app.controller('myCtrl', ['$scope', '$http', 'ManutencaoService' ,
-  function($scope, $http, ManutencaoService) {
+app.controller('ManutencaoController', ['$scope', '$http', 'ManutencaoService' , 'LoginService',
+  function($scope, $http, ManutencaoService, LoginService) {
   
   $scope.objeto = new Object();
   $scope.objeto.editando = false;
@@ -86,6 +86,10 @@ app.controller('myCtrl', ['$scope', '$http', 'ManutencaoService' ,
 
   $scope.new = function(){
     $scope.objeto.editando = true;
+  }
+  
+  $scope.logout = function(){
+  	 window.location = "login.html";
   }
 
   $scope.getTable();
