@@ -35,7 +35,6 @@ app.controller('LoginController', ['$scope', '$location', 'LoginService', '$root
                 alert("Houve um problema ao tentar fazer o login.");
             }else{
                 $localStorage.token = response.data;
-                debugger;
                 $scope.temErro = false;
                 $scope.$storage.usuarioLogado = true;
                 
@@ -46,7 +45,7 @@ app.controller('LoginController', ['$scope', '$location', 'LoginService', '$root
 
                 $rootScope.$broadcast('topic', objetoGlogal);
 
-                window.location = "index.html";
+                window.location = "manutencao.html";
             }
 
         });

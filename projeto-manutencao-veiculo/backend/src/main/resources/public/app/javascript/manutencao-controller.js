@@ -39,10 +39,10 @@ app.controller('ManutencaoController', ['$scope', '$http', 'ManutencaoService' ,
 
     ManutencaoService.getOne(id)
     .then(function(response, status, a){ 
-      $scope.objeto.id=response.data.id;
-      $scope.objeto.dia=response.data.dia;
-      $scope.objeto.nome=response.data.nome;
-      $scope.objeto.valor=response.data.valor;
+      $scope.objeto.id=response.data[0].id;
+      $scope.objeto.dia=response.data[0].dia;
+      $scope.objeto.nome=response.data[0].nome;
+      $scope.objeto.valor=response.data[0].valor;
     })
   }
   
@@ -60,8 +60,8 @@ app.controller('ManutencaoController', ['$scope', '$http', 'ManutencaoService' ,
     })
   }
 
-  $scope.put = function(id){
-    ManutencaoService.update(id)
+  $scope.put = function(){
+    ManutencaoService.update($scope.objeto)
     .then(function(response, status, a){ 
       $scope.manutencoes = response.data;
       $scope.getTable();
@@ -69,11 +69,11 @@ app.controller('ManutencaoController', ['$scope', '$http', 'ManutencaoService' ,
   }
 
   $scope.save = function(){
-  if ($scope.objeto.dia == "") {
-    console.info("Campo em Branco!")
-  } else {
+	  if ($scope.objeto.dia == "") {
+	    console.info("Campo em Branco!")
+	  } else {
       if ($scope.objeto.id) {
-        $scope.put($scope.objeto.id);
+        $scope.put();
       } else {
         $scope.insert();
       }    
