@@ -3,9 +3,9 @@ app.factory('BearerAuthInterceptor', function ($window, $q) {
         request: function(config) {
             config.headers = config.headers || {};
             var token = $window.localStorage.getItem('ngStorage-token');
-            token = token.split('\"').join('');
             
             if (token) {
+            	token = token.split('\"').join('');
               // may also use sessionStorage
                  config.headers.Authorization = 'Bearer ' + token;
 //                config.headers.Authorization = 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwMTk0OTEwNX0.jLtooYm61PWQDRf56QXR0SCzumrgKOass90FmWVwaz4h9yDDeYUCa5QL2439dRyrHUUs7lmaT2bVjWGc9_rqYw';
