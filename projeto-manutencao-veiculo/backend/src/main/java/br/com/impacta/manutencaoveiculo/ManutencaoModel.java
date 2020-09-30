@@ -6,15 +6,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class ManutencaoModel {
 
 	@Id @GeneratedValue
 	private Long id;
 	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date dia;
+	
 	private String nome;
 	private double valor;
+	
 
 	public ManutencaoModel() {
 
@@ -59,4 +67,5 @@ public class ManutencaoModel {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
+
 }
