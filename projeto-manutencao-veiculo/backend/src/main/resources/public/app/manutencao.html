@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="javascript/bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker.min.css" />
         <meta charset="UTF-8">
     </head>
 <body>
@@ -11,11 +12,12 @@
                 <h1 class="titulo text-primary text-center mt-4">Manutenção</h1>
                 <p class=" d-none">Id: <input class="form-control" type="text" ng-model="objeto.id" readonly ></p>
                 <p>Nome: <input class="form-control" type="text" ng-model="objeto.nome" ></p>
-                <p>Dia: <input class="form-control" type="text" ng-model="objeto.dia" ></p>
+                <p>Dia: <input class="form-control" type="text" ng-model="objeto.dia" id="dia"></p>
                 <p>Valor: <input class="form-control" type="text" ng-model="objeto.valor" money-mask money-mask-prepend="R$ "></p>
                 <button class="btn btn-success mb-4" ng-click="save()">save</button>
                 <button class="btn btn-warning mb-4" ng-click="objeto.editando=!objeto.editando">back</button>
                 <button class="btn btn-warning mb-4 d-none" ng-click="preencher()">easter egg</button>
+               
             </form>
         </div>
 
@@ -44,6 +46,9 @@
             <button class="btn btn-warning " ng-click="logout()">logout</button>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="javascript/bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js" integrity="sha512-XXstIIHBPC0Qn/UIcOuyzZxk2h459PLcn+/j+fTFrBzcUpyE5EoQky9m5rnReRyBLW49aK+oDaoQUKgNEaKKJQ==" crossorigin="anonymous"></script>
     <script src="javascript/app.js"></script>

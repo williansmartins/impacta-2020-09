@@ -93,4 +93,9 @@ app.controller('ManutencaoController', ['$scope', '$http', 'ManutencaoService' ,
   }
 
   $scope.getTable();
+
+  $(document).ready(function () {
+    $('#dia').datepicker({ autoclose: true});
+  });
+
 }]);
