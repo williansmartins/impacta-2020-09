@@ -43,6 +43,7 @@ app.controller('ManutencaoController', ['$scope', '$http', 'ManutencaoService' ,
       $scope.objeto.dia=response.data[0].dia;
       $scope.objeto.nome=response.data[0].nome;
       $scope.objeto.valor=response.data[0].valor;
+      aplicarFuncaoDeData();
     })
   }
   
@@ -86,16 +87,26 @@ app.controller('ManutencaoController', ['$scope', '$http', 'ManutencaoService' ,
 
   $scope.new = function(){
     $scope.objeto.editando = true;
+    setTimeout(aplicarFuncaoDeData, 2000);
   }
   
   $scope.logout = function(){
   	 window.location = "login.html";
   }
 
-  $scope.getTable();
 
-  $(document).ready(function () {
-    $('#dia').datepicker({ autoclose: true});
-  });
+  
+  var aplicarFuncaoDeData = function(){
+    $('#dia').datepicker({ 
+      autoclose: true,
+      language: "pt-BR",
+    });
+  };
+
+  var init = function(){
+    $scope.getTable();
+  }
+
+  init();
 
 }]);
